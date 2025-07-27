@@ -1,0 +1,20 @@
+---
+const items = [
+  { href: '#welcome', label: 'WELCOME' },
+  { href: '#expertise', label: 'CORE EXPERTISE' },
+  { href: '#technology', label: 'TECHNOLOGIES' },
+  { href: '#community', label: 'JOIN US' },
+  { href: '#contact', label: 'CONTACT US' }
+];
+---
+<nav class="site-nav">
+  <div class="nav-header">
+    <a href="/" class="logo">/INDEX</a>
+    <span class="date">Last updated:<br>27 July 2025</span>
+  </div>
+  <ul class="nav-list">
+    {items.map(item => (
+      <li><a href={item.href} class={Astro.url.hash === item.href ? 'active' : ''}>{item.label}</a></li>
+    ))}
+  </ul>
+</nav>
