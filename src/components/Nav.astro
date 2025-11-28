@@ -1,20 +1,115 @@
 ---
 const items = [
-  { href: '#welcome', label: 'WELCOME' },
-  { href: '#expertise', label: 'CORE EXPERTISE' },
-  { href: '#technology', label: 'TECHNOLOGIES' },
-  { href: '#community', label: 'JOIN US' },
-  { href: '#contact', label: 'CONTACT US' }
+  { href: '#welcome', label: 'Index' },
+  { href: '#expertise', label: 'Expertise' },
+  { href: '#technology', label: 'Stack' },
+  { href: '#community', label: 'Community' },
+  { href: '#contact', label: 'Connect' }
 ];
 ---
-<nav class="site-nav">
-  <div class="nav-header">
-    <a href="/" class="logo">/INDEX</a>
-    <span class="date">Last updated:<br>27 July 2025</span>
+
+<header class="main-header">
+  <div class="container nav-container">
+    <a href="/" class="brand-logo">
+      <span class="logo-symbol">///</span> DOMI GROUP
+    </a>
+
+    <nav class="desktop-nav">
+      <ul>
+        {items.map(item => (
+          <li>
+            <a href={item.href} class="nav-link">
+              <span class="nav-num">0{items.indexOf(item) + 1}</span>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="mobile-toggle">
+      <span>Menu</span>
+    </div>
   </div>
-  <ul class="nav-list">
-    {items.map(item => (
-      <li><a href={item.href} class={Astro.url.hash === item.href ? 'active' : ''}>{item.label}</a></li>
-    ))}
-  </ul>
-</nav>
+</header>
+
+<style>
+  .main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-logo {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: -0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .logo-symbol {
+    color: var(--accent-color);
+  }
+
+  .desktop-nav ul {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-num {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: var(--text-primary);
+  }
+  
+  .nav-link.active .nav-num {
+    color: var(--accent-color);
+  }
+
+  .mobile-toggle {
+    display: none;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none; /* Simple hiding for mobile for now */
+    }
+    .mobile-toggle {
+      display: block;
+    }
+  }
+</style>
