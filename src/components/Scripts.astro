@@ -1,22 +1,48 @@
-<script type="module">
+<script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const headerOffset = 80; // matches --nav-height
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - headerOffset;
+  
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Active state tracker using Intersection Observer
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-list a');
+    const navLinks = document.querySelectorAll('.nav-link');
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const id = entry.target.id;
-          navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${id}`));
+          // Remove active class from all
+          navLinks.forEach(link => link.classList.remove('active'));
+          
+          // Add active class to corresponding link
+          const id = entry.target.getAttribute('id');
+          const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+          if (activeLink) {
+            activeLink.classList.add('active');
+          }
         }
       });
-    }, { rootMargin: '-20% 0px -70% 0px' });
-    sections.forEach(section => observer.observe(section));
-    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', e => {
-        e.preventDefault();
-        const target = anchor.getAttribute('href');
-        document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
-      });
+    }, {
+      rootMargin: '-50% 0px -50% 0px' // Triggers when section is in middle of viewport
     });
+
+    sections.forEach(section => observer.observe(section));
   });
 </script>
