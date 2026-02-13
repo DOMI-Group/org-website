@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "domi-infrastructure",
   "type": "module",
   "version": "0.0.1",
@@ -15,4 +16,19 @@
     "astro": "^5.17.1",
     "tailwindcss": "^4.1.18"
   }
+=======
+  "name": "org-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^3.0.0"
+  },
+  "homepage": "https://domi-group.github.io/org-website"
+>>>>>>> 25ed4092c79c637b3bb2eb04b7c355db85f0f650
 }

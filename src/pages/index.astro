@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
@@ -139,3 +140,132 @@ const currentYear = new Date().getFullYear();
         </div>
     </footer>
 </Layout>
+=======
+---
+import Layout from '../components/Layout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <!-- Hero Section -->
+  <section id="welcome" class="container hero">
+    <div>
+      <span class="hero-tagline">> EST. 2025 // NON-PROFIT INITIATIVE</span>
+      <h1>
+        Democratizing <br />
+        <span class="text-gradient">Enterprise Grade</span> <br />
+        Infrastructure.
+      </h1>
+      <p class="hero-description">
+        DOMI Group is an open collective where professionals and enthusiasts converge. 
+        We bridge the gap between corporate datacenter standards and personal 
+        homelab environments through rigorous engineering and shared knowledge.
+      </p>
+    </div>
+  </section>
+
+  <!-- Expertise Grid -->
+  <section id="expertise" class="container section-padding">
+    <h2>Strategic Capabilities</h2>
+    <div class="bento-grid">
+      <div class="bento-card">
+        <div>
+          <span class="bento-icon">[01]</span>
+          <h3>System Architecture</h3>
+        </div>
+        <p>Implementation of resilient, scalable design patterns adapted for micro-environments without compromising on industry standards.</p>
+      </div>
+      
+      <div class="bento-card">
+        <div>
+          <span class="bento-icon">[02]</span>
+          <h3>Security Protocol</h3>
+        </div>
+        <p>Zero-trust principles, network segmentation, and robust access controls designed to safeguard data sovereignty.</p>
+      </div>
+      
+      <div class="bento-card">
+        <div>
+          <span class="bento-icon">[03]</span>
+          <h3>Knowledge Exchange</h3>
+        </div>
+        <p>A decentralized network of experts collaborating to solve complex infrastructure challenges in real-time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Stack -->
+  <section id="technology" class="container section-padding">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+      <div>
+        <h2>Technology Stack</h2>
+        <p>Our operational ecosystem utilizes best-in-class open source technologies. We focus on tools that provide transparency, control, and extensibility.</p>
+      </div>
+      
+      <div>
+        <h3>Core Infrastructure</h3>
+        <div class="tech-ticker">
+          <div class="tech-pill">Kubernetes</div>
+          <div class="tech-pill">Proxmox VE</div>
+          <div class="tech-pill">TrueNAS Scale</div>
+          <div class="tech-pill">Terraform</div>
+          <div class="tech-pill">Ansible</div>
+        </div>
+        
+        <h3 style="margin-top: 2rem;">Application Layer</h3>
+        <div class="tech-ticker">
+          <div class="tech-pill">Docker</div>
+          <div class="tech-pill">Home Assistant</div>
+          <div class="tech-pill">Prometheus</div>
+          <div class="tech-pill">Grafana</div>
+          <div class="tech-pill">pfSense</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Section -->
+  <section id="community" class="container section-padding">
+    <div style="border: 1px solid var(--border-color); padding: 4rem; background: var(--bg-secondary);">
+      <h2>The Collective</h2>
+      <p style="max-width: 800px;">
+        DOMI Group operates without barriers. No fees, no mandatory sign-ups. 
+        Just a shared commitment to engineering excellence. We are building the 
+        definitive resource for professional-grade self-hosting.
+      </p>
+      
+      <div class="bento-grid" style="margin-top: 3rem; background: transparent; border: none;">
+        <a href="https://github.com/DOMI-Group" class="bento-card" style="border: 1px solid var(--border-color);">
+          <h3>GitHub Organization</h3>
+          <p>Access our open-source configurations and blueprints.</p>
+        </a>
+        <div class="bento-card" style="border: 1px solid var(--border-color); opacity: 0.6;">
+          <h3>Discord Server</h3>
+          <p>Real-time collaboration channel. (Launching Soon)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="container section-padding">
+    <h2>Communications</h2>
+    <div class="contact-grid">
+      <a href="mailto:contact@domi.or.id" class="contact-item">
+        <h3>General Inquiries</h3>
+        <p>contact@domi.or.id</p>
+      </a>
+      <a href="mailto:support@domi.or.id" class="contact-item">
+        <h3>Technical Support</h3>
+        <p>support@domi.or.id</p>
+      </a>
+      <a href="mailto:partners@domi.or.id" class="contact-item">
+        <h3>Partnerships</h3>
+        <p>partners@domi.or.id</p>
+      </a>
+    </div>
+  </section>
+</Layout>
+
+
+>>>>>>> 25ed4092c79c637b3bb2eb04b7c355db85f0f650
