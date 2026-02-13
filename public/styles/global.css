@@ -1,5 +1,4 @@
 :root {
-  /* Design Tokens */
   --bg-primary: #050505;
   --bg-secondary: #0a0a0a;
   --bg-card: #111111;
@@ -8,7 +7,7 @@
   --text-secondary: #a1a1a1;
   --text-muted: #525252;
   
-  --accent-color: #3b82f6; /* Tech Blue - Subtle */
+  --accent-color: #3b82f6; 
   --border-color: #262626;
   --border-highlight: #404040;
   
@@ -19,7 +18,6 @@
   --nav-height: 80px;
 }
 
-/* Reset & Base */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -32,18 +30,19 @@ html {
   color: var(--text-primary);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Typography Utility */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
   color: var(--text-primary);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   line-height: 1.1;
 }
 
@@ -53,7 +52,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 600;
   margin-bottom: 2rem;
 }
@@ -76,10 +75,9 @@ p {
 a {
   color: inherit;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, opacity 0.2s ease;
 }
 
-/* Layout Utilities */
 .container {
   width: 100%;
   max-width: var(--max-width);
@@ -92,7 +90,6 @@ a {
   border-bottom: 1px solid var(--border-color);
 }
 
-/* Grid System for Visual Structure */
 .grid-bg {
   position: fixed;
   top: 0;
@@ -108,38 +105,37 @@ a {
   pointer-events: none;
 }
 
-/* Specific Component Styles */
-
-/* Hero Section */
 .hero {
   min-height: 90vh;
+  min-height: 90dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-top: var(--nav-height);
   position: relative;
+  overflow: hidden;
 }
 
 .hero-tagline {
   font-family: var(--font-mono);
   color: var(--accent-color);
   margin-bottom: 1.5rem;
-  display: block;
+  display: inline-block;
+  font-size: 0.9rem;
 }
 
 .hero-description {
   max-width: 600px;
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
   margin-top: 2rem;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
-/* Feature Grid (Bento Style) */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1px;
-  background-color: var(--border-color); /* Creates the border effect */
+  background-color: var(--border-color);
   border: 1px solid var(--border-color);
 }
 
@@ -165,31 +161,31 @@ a {
   display: block;
 }
 
-/* Tech List */
 .tech-ticker {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.75rem;
   margin-top: 2rem;
 }
 
 .tech-pill {
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   padding: 0.5rem 1rem;
   border: 1px solid var(--border-color);
   color: var(--text-secondary);
   border-radius: 99px;
-  transition: border-color 0.2s, color 0.2s;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .tech-pill:hover {
   border-color: var(--text-primary);
   color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.03);
   cursor: default;
 }
 
-/* Contact Grid */
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -201,23 +197,93 @@ a {
   border-right: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.contact-item:hover {
+  background-color: var(--bg-card);
 }
 
 .contact-item:hover h3 {
   color: var(--accent-color);
 }
 
-/* Utility */
 .text-gradient {
   background: linear-gradient(90deg, #fff, #888);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 @media (max-width: 1024px) {
-  h1 { font-size: 3rem; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .contact-item { border-right: none; }
-  .container { padding: 0 1.5rem; }
-  .bento-grid { grid-template-columns: 1fr; }
+  .section-padding { padding: 6rem 0; }
+  .bento-card { padding: 2.5rem; }
+  h1 { font-size: 3.5rem; }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 70px;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .section-padding {
+    padding: 4rem 0;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.15;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  p, .hero-description {
+    font-size: 1rem;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .bento-card {
+    padding: 1.5rem;
+    min-height: auto;
+  }
+
+  .bento-icon {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .contact-item {
+    border-right: none;
+    padding: 2rem 1rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .contact-item h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .tech-ticker {
+    gap: 0.5rem;
+  }
 }
