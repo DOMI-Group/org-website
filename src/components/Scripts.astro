@@ -1,6 +1,5 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -9,7 +8,7 @@
         
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
-          const headerOffset = 80; // matches --nav-height
+          const headerOffset = 80;
           const elementPosition = targetElement.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.scrollY - headerOffset;
   
@@ -21,28 +20,57 @@
       });
     });
 
-    // Active state tracker using Intersection Observer
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-
+    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Remove active class from all
           navLinks.forEach(link => link.classList.remove('active'));
           
-          // Add active class to corresponding link
           const id = entry.target.getAttribute('id');
           const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+          
           if (activeLink) {
             activeLink.classList.add('active');
           }
         }
       });
     }, {
-      rootMargin: '-50% 0px -50% 0px' // Triggers when section is in middle of viewport
+      rootMargin: '-50% 0px -50% 0px'
     });
 
     sections.forEach(section => observer.observe(section));
+
+    const toggleBtn = document.querySelector('.mobile-toggle');
+    const navMenu = document.querySelector('.desktop-nav');
+    const body = document.body;
+    
+    if (toggleBtn && navMenu) {
+      const menuText = toggleBtn.querySelector('span');
+
+      toggleBtn.addEventListener('click', () => {
+        const isActive = navMenu.classList.toggle('active');
+        toggleBtn.classList.toggle('active');
+        
+        body.style.overflow = isActive ? 'hidden' : '';
+        
+        if (menuText) {
+          menuText.textContent = isActive ? 'Close' : 'Menu';
+        }
+      });
+
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          toggleBtn.classList.remove('active');
+          body.style.overflow = '';
+          
+          if (menuText) {
+            menuText.textContent = 'Menu';
+          }
+        });
+      });
+    }
   });
 </script>
