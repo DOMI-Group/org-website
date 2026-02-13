@@ -1,0 +1,74 @@
+---
+const links = [
+    { name: "Expertise", href: "#expertise" },
+    { name: "Stack", href: "#stack" },
+    { name: "Collective", href: "#collective" },
+    { name: "Contact", href: "#contact" },
+];
+---
+
+<header class="fixed top-0 left-0 w-full z-50 border-b border-gray-200 bg-white/90 backdrop-blur-sm h-20">
+    <div class="container mx-auto px-6 h-full flex justify-between items-center relative">
+        <a href="/" class="font-mono font-bold text-xl tracking-tighter relative z-50 text-black">
+            <span class="text-blue-600">///</span> DOMI GROUP
+        </a>
+
+        <nav class="hidden md:flex gap-8">
+            {links.map((link, index) => (
+                <a href={link.href} class="font-mono text-sm text-gray-500 hover:text-black uppercase tracking-wider transition-colors">
+                    <span class="text-blue-600/50 mr-1">0{index + 1}</span> {link.name}
+                </a>
+            ))}
+        </nav>
+
+        <button id="menu-toggle" class="md:hidden font-mono text-sm uppercase border border-gray-200 px-4 py-2 transition-all duration-200 relative z-50 bg-white text-black hover:bg-gray-50">
+            <span id="btn-text">Menu</span>
+        </button>
+    </div>
+</header>
+
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-white transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-center px-8 pt-20">
+    <div class="flex flex-col gap-6">
+        {links.map((link, index) => (
+            <a href={link.href} class="mobile-link text-3xl font-bold text-black border-b border-gray-100 pb-4 hover:text-blue-600 transition-colors">
+                <span class="font-mono text-sm text-blue-600 block mb-2">0{index + 1}</span>
+                {link.name}
+            </a>
+        ))}
+    </div>
+    
+    <div class="mt-12 pt-8 border-t border-gray-100">
+        <p class="font-mono text-xs text-gray-500 mb-2">EST. 2025 // NON-PROFIT</p>
+        <p class="text-gray-500 text-sm">Empowering sovereign infrastructure.</p>
+    </div>
+</div>
+
+<script>
+    const btn = document.getElementById('menu-toggle');
+    const btnText = document.getElementById('btn-text');
+    const menu = document.getElementById('mobile-menu');
+    const links = document.querySelectorAll('.mobile-link');
+    let isOpen = false;
+
+    function toggleMenu() {
+        isOpen = !isOpen;
+        
+        if (isOpen) {
+            menu?.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+            if (btnText) btnText.innerText = 'Close';
+        } else {
+            menu?.classList.add('translate-x-full');
+            document.body.style.overflow = '';
+            if (btnText) btnText.innerText = 'Menu';
+        }
+    }
+
+    btn?.addEventListener('click', toggleMenu);
+    
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            if (isOpen) toggleMenu();
+        });
+    });
+</script>
