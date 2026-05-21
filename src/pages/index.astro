@@ -1,141 +1,194 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 
-const currentYear = new Date().getFullYear();
+const capabilities = [
+  {
+    index: '01',
+    title: 'System Architecture',
+    description: 'Implementation of resilient, scalable design patterns adapted for micro-environments without compromising on industry standards.',
+  },
+  {
+    index: '02',
+    title: 'Security Protocol',
+    description: 'Zero-trust principles, network segmentation, and robust access controls designed to safeguard data sovereignty.',
+  },
+  {
+    index: '03',
+    title: 'Knowledge Exchange',
+    description: 'A decentralized network of experts collaborating to solve complex infrastructure challenges in real-time.',
+  },
+];
+
+const coreTech = ['Kubernetes', 'Proxmox VE', 'TrueNAS Scale', 'Terraform', 'Ansible'];
+const appTech = ['Docker', 'Home Assistant', 'Prometheus', 'Grafana', 'pfSense'];
+
+const contacts = [
+  { label: 'General Inquiries', email: 'contact@domi.or.id' },
+  { label: 'Technical Support', email: 'support@domi.or.id' },
+  { label: 'Partnerships', email: 'partners@domi.or.id' },
+];
 ---
 
-<Layout title="DOMI Group | Domestic Open Management Infrastructure">
-    <Navbar />
+<Layout title="DOMI Group — Domestic Open Management Infrastructure">
+  <Navbar />
 
-    <main>
-        <section id="index" class="min-h-dvh flex flex-col justify-center px-6 pt-20 border-b border-border">
-            <div class="container mx-auto max-w-5xl">
-                <div class="font-mono text-accent text-sm mb-6 flex items-center gap-2">
-                    <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
-                    EST. 2025 // NON-PROFIT INITIATIVE
-                </div>
-                <h1 class="text-5xl md:text-7xl font-bold leading-[1.1] mb-8 tracking-tight">
-                    Democratizing <br />
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-neutral-600">Enterprise Grade</span> <br />
-                    Infrastructure.
-                </h1>
-                <p class="text-secondary text-lg md:text-xl max-w-2xl leading-relaxed">
-                    DOMI Group is an open collective where professionals and enthusiasts converge. 
-                    We bridge the gap between corporate datacenter standards and personal 
-                    homelab environments through rigorous engineering and shared knowledge.
-                </p>
-            </div>
-        </section>
+  <main>
+    <section id="hero" class="min-h-dvh flex flex-col justify-center px-6 pt-20 relative overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/[0.06] rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent-secondary/[0.04] rounded-full blur-[100px]"></div>
+      </div>
 
-        <section id="expertise" class="py-24 border-b border-border px-6">
-            <div class="container mx-auto max-w-6xl">
-                <h2 class="text-3xl font-bold mb-12">Strategic Capabilities</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-border border border-border">
-                    <div class="bg-surface p-8 md:p-12 hover:bg-white/5 transition-colors group">
-                        <span class="font-mono text-accent mb-8 block text-xl">[01]</span>
-                        <h3 class="text-xl font-bold mb-4 group-hover:text-accent transition-colors">System Architecture</h3>
-                        <p class="text-secondary text-sm leading-relaxed">Implementation of resilient, scalable design patterns adapted for micro-environments without compromising on industry standards.</p>
-                    </div>
-                    
-                    <div class="bg-surface p-8 md:p-12 hover:bg-white/5 transition-colors group">
-                        <span class="font-mono text-accent mb-8 block text-xl">[02]</span>
-                        <h3 class="text-xl font-bold mb-4 group-hover:text-accent transition-colors">Security Protocol</h3>
-                        <p class="text-secondary text-sm leading-relaxed">Zero-trust principles, network segmentation, and robust access controls designed to safeguard data sovereignty.</p>
-                    </div>
-                    
-                    <div class="bg-surface p-8 md:p-12 hover:bg-white/5 transition-colors group">
-                        <span class="font-mono text-accent mb-8 block text-xl">[03]</span>
-                        <h3 class="text-xl font-bold mb-4 group-hover:text-accent transition-colors">Knowledge Exchange</h3>
-                        <p class="text-secondary text-sm leading-relaxed">A decentralized network of experts collaborating to solve complex infrastructure challenges in real-time.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="stack" class="py-24 border-b border-border px-6 bg-surface">
-            <div class="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-16">
-                <div>
-                    <h2 class="text-3xl font-bold mb-6">Technology Stack</h2>
-                    <p class="text-secondary leading-relaxed">Our operational ecosystem utilizes best-in-class open source technologies. We focus on tools that provide transparency, control, and extensibility.</p>
-                </div>
-                <div class="space-y-12">
-                    <div>
-                        <h3 class="font-mono text-sm text-secondary uppercase mb-4 tracking-widest border-b border-border pb-2">Core Infrastructure</h3>
-                        <div class="flex flex-wrap gap-3">
-                            {['Kubernetes', 'Proxmox VE', 'TrueNAS Scale', 'Terraform', 'Ansible'].map(tech => (
-                                <span class="px-4 py-2 border border-border text-sm text-secondary rounded-full hover:border-primary hover:text-primary cursor-default transition-all">{tech}</span>
-                            ))}
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="font-mono text-sm text-secondary uppercase mb-4 tracking-widest border-b border-border pb-2">Application Layer</h3>
-                        <div class="flex flex-wrap gap-3">
-                            {['Docker', 'Home Assistant', 'Prometheus', 'Grafana', 'pfSense'].map(tech => (
-                                <span class="px-4 py-2 border border-border text-sm text-secondary rounded-full hover:border-primary hover:text-primary cursor-default transition-all">{tech}</span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="collective" class="grid grid-cols-1 md:grid-cols-2 border-b border-border">
-            <div class="p-12 md:p-24 border-b md:border-b-0 md:border-r border-border">
-                <h2 class="text-3xl font-bold mb-6">The Collective</h2>
-                <p class="text-secondary mb-8">DOMI Group operates without barriers. No fees, no mandatory sign-ups. Just a shared commitment to engineering excellence.</p>
-                <div class="flex flex-col gap-4">
-                    <a href="https://github.com/DOMI-Group" class="inline-flex items-center justify-between p-4 border border-border hover:bg-white/5 transition-colors group">
-                        <span class="font-mono font-bold">GitHub Organization</span>
-                        <span class="text-secondary group-hover:translate-x-1 transition-transform">→</span>
-                    </a>
-                </div>
-            </div>
-            
-            <div id="contact" class="bg-surface">
-                <div class="h-full flex flex-col">
-                    <div class="p-12 md:p-24 border-b border-border">
-                         <h2 class="text-3xl font-bold mb-2">Communications</h2>
-                         <p class="text-secondary text-sm">Direct engineering channels.</p>
-                    </div>
-                    <div class="flex-1 flex flex-col">
-                        <a href="mailto:contact@domi.or.id" class="flex-1 p-8 border-b border-border flex items-center justify-between hover:bg-white/5 transition-colors group">
-                            <div>
-                                <h3 class="font-mono text-xs text-secondary uppercase mb-1">General Inquiries</h3>
-                                <span class="text-lg md:text-xl font-medium">contact@domi.or.id</span>
-                            </div>
-                            <span class="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-accent">↗</span>
-                        </a>
-                        <a href="mailto:support@domi.or.id" class="flex-1 p-8 border-b border-border flex items-center justify-between hover:bg-white/5 transition-colors group">
-                            <div>
-                                <h3 class="font-mono text-xs text-secondary uppercase mb-1">Technical Support</h3>
-                                <span class="text-lg md:text-xl font-medium">support@domi.or.id</span>
-                            </div>
-                            <span class="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-accent">↗</span>
-                        </a>
-                        <a href="mailto:partners@domi.or.id" class="flex-1 p-8 flex items-center justify-between hover:bg-white/5 transition-colors group">
-                            <div>
-                                <h3 class="font-mono text-xs text-secondary uppercase mb-1">Partnerships</h3>
-                                <span class="text-lg md:text-xl font-medium">partners@domi.or.id</span>
-                            </div>
-                            <span class="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-accent">↗</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="py-12 px-6 bg-background">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-            <div>
-                <span class="font-mono font-bold text-lg block mb-2">DOMI GROUP</span>
-                <p class="text-secondary text-sm max-w-xs">Empowering sovereign infrastructure through open collaboration.</p>
-            </div>
-            <div class="font-mono text-xs text-secondary">
-                &copy; {currentYear} DOMI Group. Built for the community.
-            </div>
+      <div class="container mx-auto max-w-6xl relative z-10">
+        <div class="font-mono text-accent text-sm mb-8 flex items-center gap-3 animate-fade-in">
+          <span class="w-2 h-2 bg-accent rounded-full animate-glow-pulse"></span>
+          <span class="tracking-wider">EST. 2025 • NON-PROFIT INITIATIVE</span>
         </div>
-    </footer>
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-7xl 2xl:text-8xl font-bold leading-[1.05] mb-8 tracking-tight animate-fade-in" style="animation-delay: 0.15s;">
+          Democratizing<br />
+          <span class="text-gradient">Enterprise Grade</span><br />
+          Infrastructure.
+        </h1>
+
+        <p class="text-secondary text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed animate-fade-in" style="animation-delay: 0.3s;">
+          DOMI Group is an open collective where professionals and enthusiasts converge.
+          We bridge the gap between corporate datacenter standards and personal
+          homelab environments through rigorous engineering and shared knowledge.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mt-10 animate-fade-in" style="animation-delay: 0.45s;">
+          <a href="#collective" class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent hover:bg-accent/90 text-white font-mono text-sm uppercase tracking-wider transition-all duration-300 rounded-lg">
+            Join the Collective
+            <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
+          </a>
+          <a href="#expertise" class="inline-flex items-center justify-center gap-3 px-8 py-4 border border-border hover:border-border-hover text-secondary hover:text-primary font-mono text-sm uppercase tracking-wider transition-all duration-300 rounded-lg">
+            Explore
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="expertise" class="py-20 sm:py-24 md:py-32 px-6 border-t border-border">
+      <div class="container mx-auto max-w-6xl">
+        <div class="mb-12 md:mb-16 animate-on-scroll">
+          <span class="font-mono text-xs text-muted uppercase tracking-widest block mb-4">What We Do</span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">Strategic Capabilities</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-border/50 border border-border rounded-xl overflow-hidden">
+          {capabilities.map((cap, i) => (
+            <div class={`bg-surface p-8 sm:p-10 md:p-12 hover:bg-surface-elevated transition-all duration-500 group animate-on-scroll stagger-${i + 1}`}>
+              <span class="font-mono text-accent text-lg mb-8 block opacity-60 group-hover:opacity-100 transition-opacity duration-300">[{cap.index}]</span>
+              <h3 class="text-xl font-bold mb-4 text-primary group-hover:text-accent transition-colors duration-300">{cap.title}</h3>
+              <p class="text-secondary text-sm leading-relaxed mb-0">{cap.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="stack" class="py-20 sm:py-24 md:py-32 px-6 border-t border-border bg-surface/30">
+      <div class="container mx-auto max-w-6xl">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+          <div class="animate-on-scroll">
+            <span class="font-mono text-xs text-muted uppercase tracking-widest block mb-4">Our Toolkit</span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6">Technology Stack</h2>
+            <p class="text-secondary leading-relaxed text-base md:text-lg">
+              Our operational ecosystem utilizes best-in-class open source technologies.
+              We focus on tools that provide transparency, control, and extensibility.
+            </p>
+          </div>
+
+          <div class="space-y-10 animate-on-scroll stagger-2">
+            <div>
+              <h3 class="font-mono text-xs text-muted uppercase tracking-widest mb-5 border-b border-border pb-3">Core Infrastructure</h3>
+              <div class="flex flex-wrap gap-3">
+                {coreTech.map((tech) => (
+                  <span class="px-4 py-2 border border-border text-sm text-secondary rounded-full hover:border-accent/50 hover:text-primary hover:bg-accent/5 cursor-default transition-all duration-300">{tech}</span>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-mono text-xs text-muted uppercase tracking-widest mb-5 border-b border-border pb-3">Application Layer</h3>
+              <div class="flex flex-wrap gap-3">
+                {appTech.map((tech) => (
+                  <span class="px-4 py-2 border border-border text-sm text-secondary rounded-full hover:border-accent/50 hover:text-primary hover:bg-accent/5 cursor-default transition-all duration-300">{tech}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="collective" class="border-t border-border">
+      <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div class="p-8 sm:p-12 md:p-16 lg:p-12 xl:p-24 border-b lg:border-b-0 lg:border-r border-border flex flex-col justify-center">
+          <div class="animate-on-scroll">
+            <span class="font-mono text-xs text-muted uppercase tracking-widest block mb-4">Community</span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6">The Collective</h2>
+            <p class="text-secondary mb-10 text-base md:text-lg leading-relaxed">
+              DOMI Group operates without barriers. No fees, no mandatory sign-ups.
+              Just a shared commitment to engineering excellence.
+            </p>
+
+            <a href="https://github.com/DOMI-Group" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center justify-between w-full sm:w-max sm:min-w-[280px] md:min-w-[320px] lg:min-w-[280px] xl:min-w-[320px] p-5 border border-border rounded-xl hover:border-accent/40 hover:bg-accent/5 transition-all duration-300">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </div>
+                <span class="font-mono font-bold text-primary">GitHub Organization</span>
+              </div>
+              <span class="text-secondary group-hover:text-accent group-hover:translate-x-1 transition-all duration-300">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div id="contact" class="bg-surface/30">
+          <div class="h-full flex flex-col">
+            <div class="p-8 sm:p-12 md:p-16 lg:p-12 xl:p-24 lg:pb-12 xl:pb-12 animate-on-scroll">
+              <span class="font-mono text-xs text-muted uppercase tracking-widest block mb-4">Get in Touch</span>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-2">Communications</h2>
+              <p class="text-secondary text-sm">Direct engineering channels.</p>
+            </div>
+
+            <div class="flex-1 flex flex-col">
+              {contacts.map((contact, i) => (
+                <a href={`mailto:${contact.email}`} class={`flex-1 px-8 sm:px-12 md:px-16 lg:px-12 xl:px-24 py-6 border-t border-border/50 flex items-center justify-between hover:bg-surface-elevated transition-all duration-300 group animate-on-scroll stagger-${i + 1}`}>
+                  <div class="flex flex-col overflow-hidden mr-4">
+                    <h3 class="font-mono text-xs text-muted uppercase tracking-wider mb-1.5">{contact.label}</h3>
+                    <span class="text-lg sm:text-xl font-medium text-primary truncate inline-block w-full">{contact.email}</span>
+                  </div>
+                  <span class="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 text-accent text-lg">↗</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
 </Layout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { rootMargin: '0px 0px -60px 0px', threshold: 0.1 }
+  );
+
+  document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+    observer.observe(el);
+  });
+</script>
